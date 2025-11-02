@@ -4,8 +4,8 @@ fun main() {
 
 
     val firstSpaceFlightYear: Int = 1961
-    var hour = 9
-    var minute = 7
+    var hour: Int = 9
+    var minute: Int = 7
 
     println("first space flight year: $firstSpaceFlightYear")
     println("Start flight hour: $hour")
