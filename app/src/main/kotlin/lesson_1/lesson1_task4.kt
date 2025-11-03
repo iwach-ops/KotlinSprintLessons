@@ -10,20 +10,14 @@ fun main() {
 
     print("Distance - ")
     println(Distance)
-
     print("Age - ")
     println(Age)
-
     print("partOfTheDay - ")
     println(partOfTheDay)
-
     print("seconds - ")
     println(seconds)
-
     print("partOfTheYear - ")
     println(partOfTheYear)
-
     print("apogeeOfTheOrbit - ")
     println(apogeeOfTheOrbit)
-
 }
