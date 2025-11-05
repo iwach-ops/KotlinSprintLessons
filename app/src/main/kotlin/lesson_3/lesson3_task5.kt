@@ -1,14 +1,12 @@
 package org.example.app.lesson_3
 
 fun main() {
-    var fromPosition: String
-    var inToPosition: String
-    var move: Int
-    val moveString: String = "D2-D4;0"
 
-    fromPosition = moveString.substring(0, 2)
-    inToPosition = moveString.substring(3, 5)
-    move = (moveString.substring(6)).toInt()
+    val moveString = "D2-D4;0"
+    val moveStringParcing = moveString.split("-", ";")
+    val fromPosition = moveStringParcing[0]
+    val inToPosition = moveStringParcing[1]
+    val move = moveStringParcing[2]
 
     println(
         """
