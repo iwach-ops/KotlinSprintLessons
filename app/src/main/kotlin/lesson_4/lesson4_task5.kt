@@ -13,7 +13,7 @@ fun main() {
     val favorableWeather = true
 
     val shipCanSetSail =
-        (noDamage==NO_DAMAGE_COND && crewSize >= MIN_CREW_SIZE && crewSize <= MAX_CREW_SIZE && cratesOfProvisions > CRATES_OF_PROVISIONS) || (noDamage!=NO_DAMAGE_COND && crewSize == MAX_CREW_SIZE && cratesOfProvisions >= CRATES_OF_PROVISIONS && favorableWeather==FAVORABLE_WEATHER_COND)
+        (noDamage == NO_DAMAGE_COND && crewSize >= MIN_CREW_SIZE && crewSize <= MAX_CREW_SIZE && cratesOfProvisions > CRATES_OF_PROVISIONS) || (noDamage != NO_DAMAGE_COND && crewSize == MAX_CREW_SIZE && cratesOfProvisions >= CRATES_OF_PROVISIONS && favorableWeather == FAVORABLE_WEATHER_COND)
 
     println("Ship can set sail - Status: $shipCanSetSail")
 }
