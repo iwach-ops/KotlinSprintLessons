@@ -3,10 +3,8 @@ package org.example.app.lesson_5
 import kotlin.math.pow
 
 const val MIN_NORM_BMI = 18.5
-const val MAX_NORM_BMI = 25.0
-const val MIN_OVER_BMI = 25.0
-const val MAX_OVER_BMI = 30.0
-const val OBESITY_BMI = 30.0
+const val MAX_NORM_MIN_OVER_BMI = 25.0
+const val MAX_OVER_OBESITY_BMI = 30.0
 const val CM_IN_METER = 100
 const val BMI_RESPONSE_UNDER = ": Underweight"
 const val BMI_RESPONSE_NORM = ": Normal weight"
@@ -26,19 +24,19 @@ fun main() {
     val bmiResult = userWeight / userHeightInMeter.pow(2)
 
     val bmiCategory = when (bmiResult) {
-        in 0.0..MIN_NORM_BMI -> "$BMI_RESPONSE_UNDER"
-        in MIN_NORM_BMI..<MAX_NORM_BMI -> "$BMI_RESPONSE_NORM"
-        in MIN_OVER_BMI..<MAX_OVER_BMI -> "$BMI_RESPONSE_OVER"
-        in OBESITY_BMI..Double.MAX_VALUE -> "$BMI_RESPONSE_OBESITY"
+        in 0.00..<MIN_NORM_BMI -> BMI_RESPONSE_UNDER
+        in MIN_NORM_BMI..<MAX_NORM_MIN_OVER_BMI -> BMI_RESPONSE_NORM
+        in MAX_NORM_MIN_OVER_BMI..<MAX_OVER_OBESITY_BMI -> BMI_RESPONSE_OVER
+        in MAX_OVER_OBESITY_BMI..Double.MAX_VALUE -> BMI_RESPONSE_OBESITY
         else -> WRONG_DATA_ERROR_RESPONSE
     }
 
     println(
         """
             "BMI < $MIN_NORM_BMI: $BMI_RESPONSE_UNDER"
-            "$MIN_NORM_BMI <= BMI < $MAX_NORM_BMI: $BMI_RESPONSE_NORM"
-            "$MIN_OVER_BMI <= BMI < $MAX_OVER_BMI: $BMI_RESPONSE_OVER"
-            "BMI >= $OBESITY_BMI: $BMI_RESPONSE_OBESITY"
+            "$MIN_NORM_BMI <= BMI < $MAX_NORM_MIN_OVER_BMI: $BMI_RESPONSE_NORM"
+            "$MAX_NORM_MIN_OVER_BMI <= BMI < $MAX_OVER_OBESITY_BMI: $BMI_RESPONSE_OVER"
+            "BMI >= $MAX_OVER_OBESITY_BMI: $BMI_RESPONSE_OBESITY"
         """.trimIndent()
     )
 
