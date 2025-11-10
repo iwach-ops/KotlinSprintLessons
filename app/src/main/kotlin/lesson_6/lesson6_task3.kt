@@ -13,6 +13,6 @@ fun main() {
         println("Remaining , ${compareValue--} seconds")
         Thread.sleep(1000)
     }
-    
+
     println(TIMER_STOP_RESPONSE)
 }
