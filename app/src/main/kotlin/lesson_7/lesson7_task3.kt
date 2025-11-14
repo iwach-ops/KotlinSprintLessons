@@ -7,5 +7,5 @@ fun main() {
     print(ENTER_NUMBER_REQUEST)
     val inputNumber = readln().toInt()
 
-    for (counter in 0..inputNumber step (2)) println("$EVEN_NUMBER_RESPONSE $counter")
+    for (counter in 0..inputNumber step 2) println("$EVEN_NUMBER_RESPONSE $counter")
 }
