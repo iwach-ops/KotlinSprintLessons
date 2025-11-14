@@ -9,13 +9,14 @@ const val STOP_UP_SYMBOL_RANGE = 'Z'
 const val MIN_PASSWORD_SIZE = 6
 const val ENTER_PASS_REQUEST = "Enter password size: "
 const val PASSWORD_RESPONSE = "Password: "
+
 fun main() {
     val genericNumberCharRange = START_NUM_RANGE..STOP_NUM_RANGE
     val genericLoCharRange = START_SYM_RANGE..STOP_SYM_RANGE
-    val genericUpCharSymbol = START_UP_SYMBOL_RANGE..STOP_UP_SYMBOL_RANGE
+    val genericUpCharRange = START_UP_SYMBOL_RANGE..STOP_UP_SYMBOL_RANGE
     val passwordCharList = mutableListOf<Char>()
 
-    val allGeneric = genericNumberCharRange + genericLoCharRange + genericUpCharSymbol
+    val allGeneric = genericNumberCharRange + genericLoCharRange + genericUpCharRange
 
     print(ENTER_PASS_REQUEST)
     var passwordSize = readln().toInt()
@@ -27,10 +28,9 @@ fun main() {
 
     passwordCharList += genericNumberCharRange.random()
     passwordCharList += genericLoCharRange.random()
-    passwordCharList += genericUpCharSymbol.random()
+    passwordCharList += genericUpCharRange.random()
 
     for (i in 4..passwordSize) passwordCharList += allGeneric.random()
-
     passwordCharList.shuffle()
     val password = passwordCharList.joinToString("")
 
