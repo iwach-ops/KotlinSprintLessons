@@ -7,13 +7,11 @@ fun main() {
     print(HOW_MANY_REQUEST)
     val numberOfIngredients = readln().toInt()
 
-    val ingredientsArray = arrayOfNulls<String>(numberOfIngredients)
+    val ingredientsArray = Array(numberOfIngredients) { "" }
 
-    for (index in 0..<numberOfIngredients) {
+    for (index in ingredientsArray.indices) {
         print(INPUT_INGREDIENT_REQUEST)
-        val inputIngredient = readln()
-
-        ingredientsArray[index] = inputIngredient
+        ingredientsArray[index] = readln()
     }
 
     println(ingredientsArray.joinToString(", "))
