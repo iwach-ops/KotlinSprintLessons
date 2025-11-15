@@ -8,12 +8,12 @@ const val DONE_RESPONSE = "Done! You have saved the following list: "
 fun main() {
     val pizzaIngredientsArray = arrayOf("dough", "tomato", "mozzarella", "oil", "basil")
 
-    println(pizzaIngredientsArray.contentToString())
+    println(pizzaIngredientsArray.joinToString())
 
     print(REPLACE_REQUEST)
     val replaceIngredient = readln()
 
-    if (pizzaIngredientsArray.contains(replaceIngredient)) {
+    if (pizzaIngredientsArray.indexOf(replaceIngredient) >= 0) {
         print(NEW_INGREDIENT_REQUEST)
         val newInsteadOfReplacedOne = readln()
 
