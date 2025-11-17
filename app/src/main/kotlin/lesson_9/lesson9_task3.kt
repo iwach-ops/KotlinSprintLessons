@@ -15,9 +15,9 @@ fun main() {
     println(
         """
             For $numberOfServings servings, you will need: 
-            Eggs $numberOfEggs,
-            Milk $numberOfMilk,
-            Butter $numberOfButter
+            Eggs $numberOfEggs pieces,
+            Milk $numberOfMilk ml,
+            Butter $numberOfButter g
             
         """.trimIndent()
     )
