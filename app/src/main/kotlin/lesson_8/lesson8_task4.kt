@@ -6,24 +6,22 @@ const val REPLACED_INGREDIENT_NT_FOUND_RESPONSE = "The ingredient is not in the 
 const val DONE_RESPONSE = "Done! You have saved the following list: "
 
 fun main() {
-    val pizzaIngredientsArray = arrayOf("dough", "tomato", "mozzarella", "oil", "basil")
+    val pizzaIngredients = arrayOf("dough", "tomato", "mozzarella", "oil", "basil")
 
-    println(pizzaIngredientsArray.joinToString())
+    println(pizzaIngredients.joinToString())
 
     print(REPLACE_REQUEST)
     val replaceIngredient = readln()
+    val replacedIngredientIndex = pizzaIngredients.indexOf(replaceIngredient)
 
-    if (pizzaIngredientsArray.indexOf(replaceIngredient) >= 0) {
+    if (replacedIngredientIndex >= 0) {
         print(NEW_INGREDIENT_REQUEST)
         val newInsteadOfReplacedOne = readln()
-
-        val replacedIngredientIndex = pizzaIngredientsArray.indexOf(replaceIngredient)
-        pizzaIngredientsArray[replacedIngredientIndex] = newInsteadOfReplacedOne
-
+        pizzaIngredients[replacedIngredientIndex] = newInsteadOfReplacedOne
     } else {
         println(REPLACED_INGREDIENT_NT_FOUND_RESPONSE)
         return
     }
 
-    println("$DONE_RESPONSE ${pizzaIngredientsArray.contentToString()}")
+    println("$DONE_RESPONSE ${pizzaIngredients.joinToString()}")
 }
