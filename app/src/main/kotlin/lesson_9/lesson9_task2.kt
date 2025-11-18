@@ -13,16 +13,13 @@ fun main() {
 
     print(APPROVE_ADD_NEW_INGREDIENT_REQUEST)
     val input = readln()
-    var newIngredient = ""
 
     if (input.equals("y", true)) {
         print(ENTER_NEW_INGREDIENT)
-        newIngredient = readln()
+        pizzaIngredients.add(readln())
+        println("$NOW_FOLLOWING_INGREDIENTS_RESPONSE: ${pizzaIngredients.joinToString()}")
     } else {
         println(PROGRAM_TERMINATED_RESPONSE)
         return
     }
-
-    pizzaIngredients.add(newIngredient)
-    println("$NOW_FOLLOWING_INGREDIENTS_RESPONSE: ${pizzaIngredients.joinToString()}")
 }
