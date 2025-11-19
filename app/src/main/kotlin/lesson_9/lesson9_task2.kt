@@ -18,8 +18,5 @@ fun main() {
         print(ENTER_NEW_INGREDIENT)
         pizzaIngredients.add(readln())
         println("$NOW_FOLLOWING_INGREDIENTS_RESPONSE: ${pizzaIngredients.joinToString()}")
-    } else {
-        println(PROGRAM_TERMINATED_RESPONSE)
-        return
-    }
+    } else println(PROGRAM_TERMINATED_RESPONSE)
 }
