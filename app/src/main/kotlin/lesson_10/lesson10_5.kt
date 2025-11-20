@@ -21,22 +21,21 @@ fun main() {
 }
 
 fun verifyUser(login: String, password: String): String? {
+    if (login == CREDENTIALS_LOGIN && password == CREDENTIALS_PASSWORD) return generateToken()
+    else return null
+}
+
+fun getShoppingCart(token: String): String {
+    val shoppingCart = listOf("t-shirt", "Jeans", "toys", "tools")
+
+    return shoppingCart.joinToString(", ")
+}
+
+fun generateToken(): String {
     var token = ""
     val tokenChars = (('0'..'9') + ('a'..'z'))
 
-    if (login == CREDENTIALS_LOGIN && password == CREDENTIALS_PASSWORD) {
+    for (i in 1..TOKEN_LENGTH) token += tokenChars.random()
 
-        for (i in 1..TOKEN_LENGTH) token += tokenChars.random()
-
-        return token
-
-    } else return null
-}
-
-fun getShoppingCart(token: String): String? {
-    val shoppingCart = listOf("t-shirt", "Jeans", "toys", "tools")
-
-    if (token.length == TOKEN_LENGTH) return shoppingCart.joinToString(", ")
-
-    return null
+    return token
 }
