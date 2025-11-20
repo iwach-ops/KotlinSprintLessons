@@ -10,8 +10,8 @@ fun main() {
 }
 
 fun generatePassword(passwordLength: Int): String {
-    val digits = setOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
-    val specialSymbols = setOf(' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/')
+    val digits = ('0'..'9')
+    val specialSymbols = (' '..'/')
     val password = mutableListOf<Char>()
 
     for (position in 1..passwordLength) {
