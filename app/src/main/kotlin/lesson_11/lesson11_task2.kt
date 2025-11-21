@@ -4,11 +4,24 @@ const val ENTER_BIO_REQUEST = "Fill out your profile bio"
 const val ENTER_CURRENT_PASSWORD_REQUEST = "Enter your current password"
 const val ENTER_NEW_PASSWORD_REQUEST = "Enter your new Password, please"
 const val PASSWORD_CHANGED_RESPONSE = "Your password is changed successfully!"
+const val CURRENT_PASSWORD_ERROR = "Your password is wrong and cannot be changed"
 
 fun main() {
     val user = User2(123, "Frank", "Start12345", "frank@email.com")
-    user.setBio()
-    user.changePassword()
+
+    println(ENTER_BIO_REQUEST)
+    val newBio = readln()
+
+    user.addBio(newBio)
+
+    println(ENTER_CURRENT_PASSWORD_REQUEST)
+    val currentPassword = readln()
+
+    println(ENTER_NEW_PASSWORD_REQUEST)
+    val newPassword = readln()
+
+    user.changePassword(currentPassword, newPassword)
+
     user.printUserInfo()
 }
 
@@ -17,7 +30,7 @@ class User2(
     val login: String,
     var password: String,
     val email: String,
-    var bio: String = "",
+    var bio: String="",
 ) {
 
     fun printUserInfo() {
@@ -34,18 +47,16 @@ class User2(
         )
     }
 
-    fun setBio() {
-        println(ENTER_BIO_REQUEST)
-        bio = readln()
+    fun addBio(newBio: String) {
+        bio = newBio
     }
 
-    fun changePassword() {
-        println(ENTER_CURRENT_PASSWORD_REQUEST)
-        val currentPassword = readln()
+    fun changePassword(currentPassword: String, newPassword: String) {
         if (currentPassword == password) {
-            println(ENTER_NEW_PASSWORD_REQUEST)
-            password = readln()
+            password = newPassword
+
             println(PASSWORD_CHANGED_RESPONSE)
         }
+        else println(CURRENT_PASSWORD_ERROR)
     }
 }
