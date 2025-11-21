@@ -37,15 +37,12 @@ class Room(
 ) {
 
     fun addParticipant(participant: Participant) {
-        participants.add(participant)
-
+        if (participants.find { user -> user == participant } == null) participants.add(participant)
     }
 
     fun updateStatus(nickName: String, newStatus: String) {
         val user = participants.find { it.nickName == nickName }
-        if (user != null) {
-            user.status = newStatus
-        }
+        if (user != null) user.status = newStatus
     }
 }
 
