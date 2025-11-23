@@ -37,7 +37,7 @@ class Room(
 ) {
 
     fun addParticipant(participant: Participant) {
-        if (participants.find { user -> user == participant } == null) participants.add(participant)
+        if ((participants.find { it.nickName == participant.nickName }) == null) participants.add(participant)
     }
 
     fun updateStatus(nickName: String, newStatus: String) {
