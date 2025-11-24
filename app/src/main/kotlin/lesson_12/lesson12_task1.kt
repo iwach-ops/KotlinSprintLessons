@@ -1,23 +1,35 @@
 package org.example.app.lesson_12
 
 fun main() {
-    val weather = Weather()
-    weather.daytimeTemperature = 5
-    weather.nighttimeTemperature = -2
-    weather.precipitation = "snow"
+    val winterWeather = Weather()
+    winterWeather.daytimeTemperature = 5
+    winterWeather.nighttimeTemperature = -2
+    winterWeather.hasPrecipitation = true
 
-    println(
-        """
-    daytime Temperature: ${weather.daytimeTemperature}
-    nighttime Temperature: ${weather.nighttimeTemperature}
-    precipitation precipitation during the day : ${weather.precipitation}
-            
-        """.trimIndent()
-    )
+    winterWeather.displayWeatherInfo()
+
+    val summerWeather = Weather()
+    summerWeather.daytimeTemperature = 25
+    summerWeather.nighttimeTemperature = 17
+    summerWeather.hasPrecipitation = false
+
+    summerWeather.displayWeatherInfo()
+
 }
 
-class Weather() {
+class Weather {
     var daytimeTemperature = 11
     var nighttimeTemperature = 3
-    var precipitation = "rain"
+    var hasPrecipitation = false
+
+    fun displayWeatherInfo() {
+        println(
+            """
+    daytime Temperature: $daytimeTemperature
+    nighttime Temperature: $nighttimeTemperature
+    precipitation: $hasPrecipitation
+        
+    """.trimIndent()
+        )
+    }
 }
