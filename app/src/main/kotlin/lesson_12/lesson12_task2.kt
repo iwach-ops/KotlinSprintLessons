@@ -1,15 +1,15 @@
 package org.example.app.lesson_12
 
 fun main() {
-    val weather = CityWeather(12, 2, "rain")
+    val weather = CityWeather(12, 2, true)
 
     weather.printWeather()
 }
 
 class CityWeather(
-    var daytimeTemperature: Byte,
-    var nighttimeTemperature: Byte,
-    var precipitation: String,
+    val daytimeTemperature: Byte,
+    val nighttimeTemperature: Byte,
+    val precipitation: Boolean,
 ) {
     fun printWeather() {
         println(
