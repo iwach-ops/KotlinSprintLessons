@@ -1,7 +1,7 @@
 package org.example.app.lesson_13
 
 fun main() {
-    val phoneDirect1 = PhoneDirect("Tom", 14331431134314)
+    val phoneDirect1 = PhoneDirect("Tom", 14331431134314,"Reddit")
 
     phoneDirect1.printPhoneDirect()
 }
