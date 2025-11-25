@@ -1,13 +1,15 @@
 package org.example.app.lesson_12
 
+import kotlin.random.Random
+
 const val FROM_KELVIN_TO_CEL = 273.15
 const val DAYS_OF_MONTH = 30
 
 fun main() {
     val weathers = mutableListOf<EuropeWeather>()
 
-    for (i in 1..DAYS_OF_MONTH) {
-        val weather = EuropeWeather((263..313).random(), (263..313).random(), (0..1).random() == 1)
+    List(DAYS_OF_MONTH) {
+        val weather = EuropeWeather((263..313).random(), (263..313).random(), Random.nextBoolean())
         weathers.add(weather)
     }
 
