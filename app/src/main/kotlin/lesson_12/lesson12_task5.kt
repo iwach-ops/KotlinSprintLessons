@@ -6,11 +6,12 @@ const val FROM_KELVIN_TO_CEL = 273.15
 const val DAYS_OF_MONTH = 30
 
 fun main() {
-    val weathers = mutableListOf<EuropeWeather>()
-
-    List(DAYS_OF_MONTH) {
-        val weather = EuropeWeather((263..313).random(), (263..313).random(), Random.nextBoolean())
-        weathers.add(weather)
+    val weathers = List(DAYS_OF_MONTH) {
+        EuropeWeather(
+            (263..313).random(),
+            (263..313).random(),
+            Random.nextBoolean()
+        )
     }
 
     println(
