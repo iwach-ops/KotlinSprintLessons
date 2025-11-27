@@ -8,16 +8,19 @@ fun main() {
 
 open class Liner(
     open val speed: Int = 100,
-    open val capacity: Int = 500,
+    open val cargoCapacity: Int = 100,
+    open val passengerCapacity: Int = 500,
 )
 
 class CargoShip(
     override val speed: Int = 60,
-    override val capacity: Int = 800,
-) : Liner(speed, capacity)
+    override val cargoCapacity: Int = 800,
+    override val passengerCapacity: Int = 0,
+) : Liner(speed, cargoCapacity, passengerCapacity)
 
 class Icebreaker(
     override val speed: Int = 40,
-    override val capacity: Int = 50,
+    override val cargoCapacity: Int = 50,
+    override val passengerCapacity: Int = 0,
     val canBreakIce: Boolean = true,
-) : Liner(speed, capacity)
+) : Liner(speed, cargoCapacity, passengerCapacity)
