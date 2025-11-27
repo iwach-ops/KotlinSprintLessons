@@ -6,26 +6,28 @@ fun main() {
     val iceBreaker = IcebreakerB()
 
     liner.displayInfo()
-    liner.extendHorizontalRampFromWaist()
+    liner.load()
     cargo.displayInfo()
-    cargo.activateLoadingCrane()
+    cargo.load()
     iceBreaker.displayInfo()
-    iceBreaker.openGateFromStern()
+    iceBreaker.load()
 }
 
 open class LinerB(
     open val speed: Int = 100,
-    open val capacity: Int = 500,
+    open val cargoCapacity: Int = 100,
+    open val passengerCapacity: Int = 500,
 ) {
-    fun extendHorizontalRampFromWaist() {
-        println("extend a horizontal ramp from the waist")
+    open fun load() {
+        println("to extend a horizontal ramp from the waist")
     }
 
     open fun displayInfo() {
         println(
             """
              speed: $speed
-             capacity: $capacity
+             cargoCapacity: $cargoCapacity
+             passengerCapacity: $passengerCapacity
         """.trimIndent()
         )
     }
@@ -33,28 +35,42 @@ open class LinerB(
 
 class CargoShipB(
     override val speed: Int = 60,
-    override val capacity: Int = 800,
-) : LinerB(speed, capacity) {
-    fun activateLoadingCrane() {
-        println("activate a loading crane")
-    }
-}
-
-class IcebreakerB(
-    override val speed: Int = 40,
-    override val capacity: Int = 50,
-    val canBreakIce: Boolean = true,
-) : LinerB(speed, capacity) {
-    fun openGateFromStern() {
-        println("open a gate from the stern")
+    override val cargoCapacity: Int = 800,
+    override val passengerCapacity: Int = 0,
+) : LinerB(speed, cargoCapacity, passengerCapacity) {
+    override fun load() {
+        println("to activate a loading crane")
     }
 
     override fun displayInfo() {
         println(
             """
              speed: $speed
-             capacity: $capacity
-             can break ice: $canBreakIce
+             cargoCapacity: $cargoCapacity
+             passengerCapacity: $passengerCapacity
+        """.trimIndent()
+        )
+    }
+}
+
+
+class IcebreakerB(
+    override val speed: Int = 40,
+    override val cargoCapacity: Int = 50,
+    override val passengerCapacity: Int = 0,
+    val canBreakIce: Boolean = true,
+) : LinerB(speed, cargoCapacity, passengerCapacity) {
+    override fun load() {
+        println("to open a gate from the stern")
+    }
+
+    override fun displayInfo() {
+        println(
+            """
+             speed: $speed
+             cargoCapacity: $cargoCapacity
+             passengerCapacity: $passengerCapacity
+             canBreakIce: $canBreakIce
         """.trimIndent()
         )
     }
