@@ -53,7 +53,6 @@ class CargoShipB(
     }
 }
 
-
 class IcebreakerB(
     override val speed: Int = 40,
     override val cargoCapacity: Int = 50,
