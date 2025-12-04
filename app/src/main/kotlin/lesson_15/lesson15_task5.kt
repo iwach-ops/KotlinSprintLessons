@@ -14,9 +14,7 @@ fun main() {
     car.unloadPassengers(3)
 }
 
-abstract class Transport
-
-class Truck() : Transport(), CargoTransport, PassengerTransport, VehicleMovement {
+class Truck : CargoTransport, PassengerTransport, VehicleMovement {
     override val maxPassengers: Int = 1
     override val maxCargoTons: Int = 2
     override var currentPassengers: Int = 0
@@ -27,7 +25,7 @@ class Truck() : Transport(), CargoTransport, PassengerTransport, VehicleMovement
     }
 }
 
-class Car() : Transport(), PassengerTransport, VehicleMovement {
+class Car : PassengerTransport, VehicleMovement {
     override val maxPassengers: Int = 3
     override var currentPassengers: Int = 0
 
@@ -45,23 +43,15 @@ interface PassengerTransport {
     var currentPassengers: Int
 
     fun loadPassengers(count: Int) {
-        val newTotal = currentPassengers + count
-        if (newTotal > maxPassengers) {
-            println("Cannot load $count Passengers. Max is $maxPassengers. Current: $currentPassengers")
-        } else {
-            currentPassengers = newTotal
-            println("Loaded $count. Now: $currentPassengers")
-        }
+        currentPassengers = (currentPassengers + count).coerceAtMost(maxPassengers)
+
+        println("Passengers now: $currentPassengers")
     }
 
     fun unloadPassengers(count: Int) {
-        val newTotal = currentPassengers - count
-        if (newTotal < 0) {
-            println("Cannot unload $count. Now: $currentPassengers")
-        } else {
-            currentPassengers = newTotal
-            println("Unload $count Now: $currentPassengers")
-        }
+        currentPassengers = (currentPassengers - count).coerceAtLeast(0)
+
+        println("Passengers now: $currentPassengers")
     }
 }
 
@@ -70,22 +60,14 @@ interface CargoTransport {
     var currentCargoTons: Int
 
     fun loadCargo(tons: Int) {
-        val newTotal = currentCargoTons + tons
-        if (newTotal > maxCargoTons) {
-            println("cannot load $tons tons. Max: $maxCargoTons. Current: $currentCargoTons")
-        } else {
-            currentCargoTons = newTotal
-            println("Loaded $tons tons. Now: $currentCargoTons")
-        }
+        currentCargoTons = (currentCargoTons + tons).coerceAtMost(maxCargoTons)
+
+        println("Cargo now: $currentCargoTons tons")
     }
 
     fun unloadCargo(tons: Int) {
-        val newTotal = currentCargoTons - tons
-        if (newTotal < 0) {
-            println("Cannot unload $tons tons. On board: $currentCargoTons")
-        } else {
-            currentCargoTons = newTotal
-            println("Unloaded $tons tons. Now: $currentCargoTons")
-        }
+        currentCargoTons = (currentCargoTons - tons).coerceAtLeast(0)
+
+        println("Cargo now: $currentCargoTons tons")
     }
 }
