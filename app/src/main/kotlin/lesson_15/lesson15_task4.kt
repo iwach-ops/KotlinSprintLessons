@@ -1,9 +1,7 @@
 package org.example.app.lesson_15
 
 fun main() {
-
     val instrument1 = Instrument(1, "accordion", 12)
-
     instrument1.searchProduct()
 }
 
@@ -17,18 +15,18 @@ class Instrument(
     id: Int,
     name: String,
     numberOfUnits: Int,
-) : Product(id, name, numberOfUnits), Search {
+) : Product(id, name, numberOfUnits), Searchable {
     override fun searchProduct() {
-        println("Search is running for the instrument $id")
+        println("Search is running for the instrument $name")
     }
 }
 
 class Accessory(
     id: Int,
     name: String,
-    numberOfUnits: Int
+    numberOfUnits: Int,
 ) : Product(id, name, numberOfUnits)
 
-interface Search {
+interface Searchable {
     fun searchProduct()
 }
