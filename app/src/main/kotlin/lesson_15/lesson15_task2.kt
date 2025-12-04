@@ -1,65 +1,37 @@
 package org.example.app.lesson_15
 
 fun main() {
-    val temp = Temperature(-15.6)
-    val snow= PrecipitationAmount(10.9)
-
-    val server= WeatherServer()
-
-    server.sendStats(temp)
-    server.sendStats(snow)
+    val status1 = Temperature("temp", -12.0, "C")
+    val status2 = PrecipitationAmount("snow", 10.0, "mm")
+    val server = WeatherServer()
+    server.sendToServer(status1)
+    server.sendToServer(status2)
 }
 
-abstract class WeatherStationStats()
+abstract class WeatherStationStats(
+    val name: String,
+    val value: Double,
+    val unit: String,
+)
 
 class Temperature(
-    val value: Double,
-    val unit: String = "C"
-) : WeatherStationStats()
+    name: String,
+    value: Double,
+    unit: String = "C",
+) : WeatherStationStats(name, value, unit)
 
 class PrecipitationAmount(
-    val value: Double,
-    val unit: String = "mm"
-) : WeatherStationStats()
+    name: String,
+    value: Double,
+    unit: String = "mm"
+) : WeatherStationStats(name, value, unit)
 
-class WeatherServer() : WeatherProvider, WeatherNotifier {
-    fun sendStats(status: WeatherStationStats) {
-
+class WeatherServer() {
+    fun sendToServer(status: WeatherStationStats) {
         when (status) {
-            is Temperature -> println("Temperature is: ${status.value} ${status.unit}")
-            is PrecipitationAmount -> println("Temperature is: ${status.value} ${status.unit}")
-            else -> print("unknown status")
+            is Temperature -> println("Temperature: ${status.value} ${status.unit}")
+            is PrecipitationAmount -> println("Precipitation Amount: ${status.value} ${status.unit}")
+            else -> println("unknown status")
         }
     }
-
-    override fun getCurrentStats() {
-        TODO("Not yet implemented")
-    }
-
-    override fun getForecast() {
-        TODO("Not yet implemented")
-    }
-
-    override fun subscribe() {
-        TODO("Not yet implemented")
-    }
-
-    override fun unsubscribe() {
-        TODO("Not yet implemented")
-    }
-
-    override fun refreshWeatherData() {
-        TODO("Not yet implemented")
-    }
-}
-
-interface WeatherProvider {
-    fun getCurrentStats()
-    fun getForecast()
-}
-
-interface WeatherNotifier {
-    fun subscribe()
-    fun unsubscribe()
-    fun refreshWeatherData()
 }
