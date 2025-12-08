@@ -22,17 +22,18 @@ class UserDescription(
             println("Login is changed successfully")
         }
 
-    var password: String = _password
+    private var realPassword = _password
+    var password: String
+        get() = "*".repeat(realPassword.length)
         set(value) {
-            if (field != value)
-                println("You cannot change your password.")
+            println("You cannot change your password.")
         }
 
     fun displayUserInfo() {
         println(
             """
             login: $login
-            password: ${"*".repeat(password.length)}
+            password: $password
         """.trimIndent()
         )
     }
