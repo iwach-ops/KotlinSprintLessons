@@ -1,21 +1,22 @@
 package org.example.app.lesson_17
 
 fun main() {
-    val package1 = Package(123)
+    val shipment1 = Shipment(123, "Station_B")
 
-    package1.displayPackageInfo()
+    shipment1.displayShipmentInfo()
 
-    package1.currentLocation = "Station_B"
+    shipment1.currentLocation = "Station_A"
 
-    package1.displayPackageInfo()
+    shipment1.displayShipmentInfo()
 }
 
-class Package(
+class Shipment(
     val packageNumber: Int,
+    initialLocation: String,
 ) {
     var movementCounter = 0
 
-    var currentLocation: String = "Station_A"
+    var currentLocation: String = initialLocation
         set(value) {
             if (field != value) {
                 field = value
@@ -23,7 +24,7 @@ class Package(
             }
         }
 
-    fun displayPackageInfo() {
+    fun displayShipmentInfo() {
         println(
             """
         package number: $packageNumber
