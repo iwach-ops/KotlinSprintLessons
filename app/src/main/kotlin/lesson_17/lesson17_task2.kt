@@ -26,8 +26,6 @@ class Ship {
     var homePort: String = "Island"
     var name = SHIP_NAME
         set(value) {
-            if (value != field) {
-                println("Changing Name \"$SHIP_NAME\"! Not Allowed!")
-            }
+            println("Changing Name \"$field\"! Not Allowed!")
         }
 }
