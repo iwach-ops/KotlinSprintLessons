@@ -1,32 +1,25 @@
 package org.example.app.lesson_17
 
 fun main() {
-    val folder = Folder("ABC", 12, true)
+    val folder1 = Folder("Folder1", 12, true)
 
-    folder.displayFolderInfo()
+    println("name: ${folder1.name}")
+    println("number of files: ${folder1.numberOfFiles}")
 
-    folder.isSecret = false
+    val folder2 = Folder("Folder2", 12, false)
 
-    folder.displayFolderInfo()
+    println("name: ${folder2.name}")
+    println("number of files: ${folder2.numberOfFiles}")
 }
 
 class Folder(
     _name: String,
     _numberOfFiles: Int,
-    var isSecret: Boolean = false,
+    private var isSecret: Boolean,
 ) {
-   private val name: String = _name
+    val name: String = _name
         get() = if (isSecret) "hidden folder" else field
 
-   private val numberOfFiles: Int = _numberOfFiles
+    val numberOfFiles: Int = _numberOfFiles
         get() = if (isSecret) 0 else field
-
-    fun displayFolderInfo() {
-        println(
-            """
-       folder name: ${name}
-       number Of Files: ${numberOfFiles}
-    """.trimIndent()
-        )
-    }
 }
