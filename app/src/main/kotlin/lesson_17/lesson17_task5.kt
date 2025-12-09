@@ -22,9 +22,8 @@ class UserDescription(
             println("Login is changed successfully")
         }
 
-    private var realPassword = _password
-    var password: String
-        get() = "*".repeat(realPassword.length)
+    var password = _password
+        get() = "*".repeat(field.length)
         set(value) {
             println("You cannot change your password.")
         }
