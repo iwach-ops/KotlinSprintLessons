@@ -1,10 +1,7 @@
 package org.example.app.lesson_17
 
-const val SHIP_NAME = "First"
-
 fun main() {
-    val ship = Ship()
-    ship.name = SHIP_NAME
+    val ship = Ship("First")
     ship.homePort = "Porto"
     ship.averageSpeed = 98.0
 
@@ -21,10 +18,10 @@ fun main() {
     println("name: ${ship.name}")
 }
 
-class Ship {
+class Ship(_name: String) {
     var averageSpeed: Double = 100.0
     var homePort: String = "Island"
-    var name = SHIP_NAME
+    var name = _name
         set(value) {
             println("Changing Name \"$field\"! Not Allowed!")
         }
