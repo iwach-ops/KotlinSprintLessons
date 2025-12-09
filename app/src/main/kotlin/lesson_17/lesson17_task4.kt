@@ -18,10 +18,8 @@ class Shipment(
 
     var currentLocation: String = initialLocation
         set(value) {
-            if (field != value) {
-                field = value
-                movementCounter++
-            }
+            field = value
+            movementCounter++
         }
 
     fun displayShipmentInfo() {
