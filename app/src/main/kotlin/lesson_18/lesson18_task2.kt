@@ -9,26 +9,22 @@ fun main() {
     dices.forEach { it -> it.rollDice() }
 }
 
-abstract class Dice(
-    val sides: Int
-) {
-    abstract fun rollDice()
-}
+abstract class Dice {
+    abstract val sides: Int
 
-class Dice4 : Dice(4) {
-    override fun rollDice() {
+    fun rollDice() {
         println("Dice$sides: ${(1..sides).random()}")
     }
 }
 
-class Dice6 : Dice(6) {
-    override fun rollDice() {
-        println("Dice$sides: ${(1..sides).random()}")
-    }
+class Dice4 : Dice() {
+    override val sides: Int = 4
 }
 
-class Dice8 : Dice(8) {
-    override fun rollDice() {
-        println("Dice$sides: ${(1..sides).random()}")
-    }
+class Dice6 : Dice() {
+    override val sides: Int = 6
+}
+
+class Dice8 : Dice() {
+    override val sides: Int = 8
 }
