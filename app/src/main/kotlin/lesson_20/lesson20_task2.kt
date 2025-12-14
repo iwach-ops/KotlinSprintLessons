@@ -5,7 +5,7 @@ fun main() {
 
     println("current health: ${player.currentHealth}")
 
-    val healingPotion: (Player)->Unit ={player.currentHealth=player.maximumHealth}
+    val healingPotion: (Player) -> Unit = { player.currentHealth = player.maximumHealth }
 
     healingPotion(player)
 
@@ -16,4 +16,4 @@ class Player(
     val name: String,
     var currentHealth: Int,
     val maximumHealth: Int,
-    )
+)
