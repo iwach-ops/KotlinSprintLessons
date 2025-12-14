@@ -18,7 +18,7 @@ class Robot {
         "My name is Bob"
     )
 
-    private var modifier: ((String) -> String)? = null
+    private var modifier: ((String) -> String) = { it }
 
     fun setModifier(modify: (String) -> String) {
         modifier = modify
