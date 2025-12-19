@@ -10,7 +10,10 @@ fun main() {
         4.37
     )
 
-    val (name, description, dateTime, distanceFromEarth) = alpha
+    val name = alpha.component1()
+    val description = alpha.component2()
+    val dateTime = alpha.component3()
+    val distanceFromEarth = alpha.component4()
 
     println(
         """
